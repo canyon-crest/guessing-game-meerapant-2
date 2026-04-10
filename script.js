@@ -56,56 +56,66 @@ function play(){
 
 }
 
-function makeGuess() {
+function makeGuess(){
     let guess = parseInt(document.getElementById("guess").value);
-    let diff = Math.abs(guess - answer);
+    let diff = Math.abs(guess-answer);
     let range = 0;
     let levels = document.getElementsByName("level");
-    for (let i = 0; i < levels.length; i++) {
-        if (levels[i].checked) {
+   for(let i=0; i<levels.length; i++){
+       if(levels[i].checked){
             range = parseInt(levels[i].value);
-        }
-    }
+       }
+   }
+   //input validation NaN
 
-    if (isNaN(guess)) {
+    if(isNaN(guess)){
         msg.textContent = casedName + ", please enter a valid number";
         return;
     }
 
-    if (range == 3 && (guess > 3 || guess < 1)) {
-        msg.textContent = casedName + ", please enter a number within 1 to 3.";
-        return;
-    } else if (range == 10 && (guess > 10 || guess < 1)) {
-        msg.textContent = casedName + ", please enter a number within 1 to 10.";
-        return;
-    } else if (range == 100 && (guess > 100 || guess < 1)) {
-        msg.textContent = casedName + ", please enter a number within 1 to 100.";
-        return;
-    }
+    if (range == 3 && (guess > 3 || guess < 1)){
+       msg.textContent = casedName + ", please enter a number within 1 to 3.";
+       return;
+   }
+    else if (range == 10 && (guess > 10 || guess < 1)){
+       msg.textContent = casedName + ", please enter a number within 1 to 10.";
+       return;
+   }
+    else if (range == 100 && (guess > 100 || guess < 1)){
+       msg.textContent = casedName + ", please enter a number within 1 to 100.";
+       return;
+   }
+
 
     guessCount++;
-
-    if (guess == answer) {
-        let quality = "";
-        if (range == 10) {
-            if (guessCount < 3) quality = "Amazing work! ";
-            else if (guessCount < 5) quality = "Good job! ";
-            else quality = "Nice try! ";
-        } else if (range == 100) {
-            if (guessCount < 8) quality = "Amazing work! ";
-            else if (guessCount < 18) quality = "Good job! ";
-            else quality = "Nice try! ";
-        } else {
-            quality = "Try a harder level now! ";
-        }
-
-        msg.textContent = quality + "Correct! It took " + guessCount + " tries, " + casedName + "!";
+    if(guess == answer){
+        msg.textContent = "Correct! It took " + guessCount + " tries, " + casedName + "!";
         updateScore(guessCount);
         resetGame();
-    } else if (guess < answer) {
-        if (diff <= 2) {
-            msg.textContent = "Too low, but getting hot, " + casedName + "!";
-        } else if
+    }
+    else if(guess < answer){
+        if (diff <= 2){
+            msg.textContent = "Too low, but getting hot, " + casedName + "!"
+        }
+            else if (diff <= 5){
+            msg.textContent = "Too low, but getting warm, " + casedName + "!"
+        }
+        else {
+            msg.textContent = "Too low, and cold, " + casedName + "!"
+        }
+    }
+    else{
+        if (diff <= 2){
+            msg.textContent = "Too high, but getting hot, " + casedName + "!"
+        }
+            else if (diff <= 5){
+            msg.textContent = "Too high, but getting warm, " + casedName + "!"
+        }
+        else {
+            msg.textContent = "Too high, and cold, " + casedName + "!"
+        }
+    }
+
     
 //   After each wrong guess, also tell the player how close they are based on Math.abs(guess - answer):
 
