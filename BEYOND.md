@@ -4,7 +4,7 @@ CSS:
 
 Score quality feedback: 
 - I modified the makeGuess function to say "amazing work", "good job", and "nice try", after the user completes the game.
-- Function:
+- Function: makeGuess
 - Line Number:
 
 Input validation: 
