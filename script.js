@@ -58,14 +58,62 @@ function play(){
 
 function makeGuess(){
     let guess = parseInt(document.getElementById("guess").value);
-    let diff = Math.abs(guess-answer);
+    let diff = Math.abs(guess-answer); 
+    let range = 0;
+    let levels = document.getElementsByName("level");
+    for(let i=0; i<levels.length; i++){
+        if(levels[i].checked){
+             range = parseInt(levels[i].value);
+        }
+    }
+    //input validation NaN
     if(isNaN(guess)){
         msg.textContent = casedName + ", please enter a valid number";
         return;
     }
+    if (range == 3 && (guess > 3 || guess < 1)){
+        msg.textContent = casedName + ", please enter a number within 1 to 3.";
+        return;
+    }
+     else if (range == 10 && (guess > 10 || guess < 1)){
+        msg.textContent = casedName + ", please enter a number within 1 to 10.";
+        return;
+    }
+     else if (range == 100 && (guess > 100 || guess < 1)){
+        msg.textContent = casedName + ", please enter a number within 1 to 100.";
+        return;
+    }
+
+
+
     guessCount++;
-    if(guess == answer){
-        msg.textContent = "Correct! It took " + guessCount + " tries, " + casedName + "!";
+    if(guess == answer){ 
+        
+        if (range == 10){
+            if (guessCount < 3){
+                 msg.textContent = "Amazing work! It took " + guessCount + " tries, " + casedName + "!";
+            }
+            else if (guessCount < 5){
+                msg.textContent = "Good job! It took " + guessCount + " tries, " + casedName + "!";
+            }
+            else {
+                msg.textContent = "Nice try! It took " + guessCount + " tries, " + casedName + "!";
+            }
+        }
+        else if (range == 100){
+            if (guessCount < 8){
+                 msg.textContent = "Amazing work! It took " + guessCount + " tries, " + casedName + "!";
+            }
+            else if (guessCount < 18){
+                msg.textContent = "Good job! It took " + guessCount + " tries, " + casedName + "!";
+            }
+            else {
+                msg.textContent = "Nice try! It took " + guessCount + " tries, " + casedName + "!";
+            }
+        }
+        else {
+            msg.textContent = "Try a harder level now! It took " + guessCount + " tries, " + casedName + "!";
+        }
         updateScore(guessCount);
         resetGame();
     }

@@ -1,0 +1,47 @@
+body {
+    background-color: rgb(255, 239, 255);
+    color: rgb(63, 32, 87);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 20px;
+}
+
+#container {
+    max-width: 1000px; 
+    width: 95%; 
+    margin: 20px auto;
+    background-color: rgb(234, 219, 246);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+h1 {
+    background-color: rgb(253, 228, 250);
+    border: 3px solid rgb(107, 76, 170); 
+    border-radius: 15px;
+    padding: 15px;
+    width: 90%;
+    max-width: 600px;
+    text-align: center;
+    margin: 0 auto 30px auto;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+}
+
+h2 {
+    text-align: center;
+    font-size: 1.4em;
+    font-style: italic;
+    margin-bottom: 20px;
+}
+
+h3 {
+    padding: 5px 0 5px 10px; 
+    border-left: 4px solid rgb(107, 76, 170);
+    margin: 25px 0 10px 20px;
+}
+
+p {
+    line-height: 1.8;
+    margin: 0 20px 15px 30px;
+}
