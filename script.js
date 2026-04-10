@@ -61,7 +61,8 @@ function makeGuess(){
     let diff = Math.abs(guess-answer);
     let range = 0;
     let levels = document.getElementsByName("level");
-   for(let i=0; i<levels.length; i++){
+   
+    for(let i=0; i<levels.length; i++){
        if(levels[i].checked){
             range = parseInt(levels[i].value);
        }
